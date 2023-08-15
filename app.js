@@ -23,7 +23,7 @@ yargs.command({
         }
     },
     handler: function(argv){
-        addNote
+        addNote(argv.title,argv.body)
     }
 })
 //remove
