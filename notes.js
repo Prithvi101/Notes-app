@@ -24,6 +24,8 @@ const removeNote = function(title){
     console.log(title + ' selected for removing')
     deleteNote(title)
 }
+
+//delete note
 const deleteNote = function(title){
     const notes = loadNotes()
     if(notes.some((note)=>{
@@ -42,6 +44,7 @@ const deleteNote = function(title){
     }
 
 }
+// list note
 const listNotes = function(){
     const notes = loadNotes()
     notes.forEach(element => {
@@ -49,7 +52,21 @@ const listNotes = function(){
     });
 }
 
+//read note
+const readNote = function(title){
+    const notes = loadNotes()
+   // console.log("notes loaded -> " + notes)
+    notes.forEach(note =>{
+        //console.log(note.body)
+        if(note.title==title){
+            console.log(chalk.blue.inverse(note.title));
+            console.log(note.body);
+        }
+    })
+    // consolelog(notes)
+    //consolelog(notes[0].body)
 
+}
 const saveNote = function(notes){
     const data = JSON.stringify(notes)
     fs.writeFileSync('notes.json',data)
@@ -69,5 +86,6 @@ module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     removeNote:removeNote,
-    listNotes:listNotes
+    listNotes:listNotes,
+    readNote:readNote
 }
